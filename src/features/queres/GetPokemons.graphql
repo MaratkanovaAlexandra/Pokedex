@@ -1,0 +1,22 @@
+query Get_pokemons(
+  $limit: Int
+  $orderBy: [pokemon_v2_pokemon_order_by!]
+  $where: pokemon_v2_pokemon_bool_exp
+) {
+  pokemon: pokemon_v2_pokemon(
+    limit: $limit
+    where: $where
+    order_by: $orderBy
+  ) {
+    id
+    name
+    types: pokemon_v2_pokemontypes {
+      type: pokemon_v2_type {
+        name
+      }
+    }
+    sprites: pokemon_v2_pokemonsprites {
+      sprites
+    }
+  }
+}
